@@ -5,11 +5,12 @@
 ## Release Notes 📝
 
 - **Added support for video search functionality.**
-- **Added "limit" option in the "searchPins" function**
-- **Resolved all the errors**
-- **Added `getAutoCompletion` function that takes a query parameter**
-- **Addedd `getComments` function that takes `IOptions` as a parameter**
-- **Fixed video property**
+- **Added `limit` option in the `searchPins` function.**
+- **Resolved all existing errors.**
+- **Added `getAutoCompletion` function that takes a query parameter.**
+- **Added `getComments` function that takes `IOptions` as a parameter.**
+- **Fixed the `video` property in the `getPin` function.**
+- **Added `visualSearch` function that takes `IOptions` as a parameter.**
 
 ## Key Features 🚀
 
@@ -39,7 +40,7 @@ const Pinterest = require("pinterest.js");
 ### [1.0.5] - 2024-07-06
 
 - Added support for video search functionality.
-- Added "limit" option in the "searchPins" function.
+- Added `limit` option in the `searchPins` function.
 - Resolved all existing errors.
 
 ### [1.0.8] - 2024-07-10
@@ -52,12 +53,16 @@ const Pinterest = require("pinterest.js");
 
 ### [1.0.13] - 2024-08-06
 
-- Fixed the `video` property in the `suggestions` function.
+- Fixed the `video` property in the `getPin` function.
 
 ### [1.0.16] - 2024-08-06
 
 - Added `getComments` function that takes `IOptions` as a parameter.
-- The old function `getPin` has been officially deprecated though, it is still usable `getPinV3`
+- The old function `getPin` has been officially deprecated, though it is still usable as `getPinV3`.
+
+### [1.0.17] - 2024-08-06
+
+- Added `visualSearch` function that takes `IOptions` as a parameter.
 
 ## Projects Using Pinterest.js 🌟
 

@@ -3,11 +3,23 @@ import request from "../fetch/request";
 import type { BoardResponse } from "../interfaces";
 import parseBoards from "../parser/parser.boards";
 
+/**
+ * Searches for boards based on the given query and optional bookmark.
+ *
+ * This function fetches a list of boards matching the search query.
+ *
+ * @param query - The search term to find boards.
+ * @param bookmark - An optional bookmark for pagination or filtering.
+ * @returns A promise that resolves to the parsed board data (`BoardResponse`).
+ * @throws Error if no query is specified.
+ */
 export async function searchBoards(
   query: string,
   bookmark?: string
 ): Promise<BoardResponse> {
   if (!query) throw Error("No query specified");
+
+  // Define the request parameters
   const params = {
     source_url: `/search/boards/?q=${query}&rs=content_type_filter`,
     data: {
@@ -31,12 +43,16 @@ export async function searchBoards(
     },
   };
 
+  // Construct the URL for the API request
   const URL: string = `${
     Api.baseURL
   }/resource/BaseSearchResource/get/?source_url=${encodeURIComponent(
     params.source_url
   )}&data=${encodeURIComponent(JSON.stringify(params.data))}`;
 
+  // Make the API request
   const data = await request.get(URL);
+
+  // Parse the response data and return it
   return parseBoards(data);
 }

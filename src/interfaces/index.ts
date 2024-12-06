@@ -10,3 +10,5 @@ export type * from "./Pin.Response";
 export type * from "./Search.AutoCompletion";
 export type * from "./Pin.ResponseV4";
 export type * from "./Comments.Response";
+export type * from "./Visuals.Results";
+export type * from "./Visuals.Options";

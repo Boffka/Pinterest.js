@@ -9,6 +9,17 @@ export interface ISearchResponse {
   bookmark?: string;
 }
 
+/**
+ * Searches for pins based on the query and optional filter options.
+ *
+ * The function handles two types of searches: general pin search and video-specific pin search.
+ * If the `filter` option is set to "videos", it fetches video pins; otherwise, it fetches regular pins.
+ *
+ * @param query - The search term to find pins.
+ * @param options - Optional settings for the search, such as filters, limit, and bookmarks.
+ * @returns A promise that resolves to the search results, including pins or videos and pagination information.
+ * @throws Error if no query is specified.
+ */
 export async function searchPins(
   query: string,
   options?: SearchOptions
@@ -16,6 +27,7 @@ export async function searchPins(
   if (!query) throw Error("No query specified");
 
   if (typeof options?.filter === "string" && options?.filter === "videos") {
+    // If the filter is "videos", search for video pins
     const params = {
       source_url: `/search/pins/?q=${query}&rs=typed`,
       data: {
@@ -43,8 +55,9 @@ export async function searchPins(
     )}&data=${encodeURIComponent(JSON.stringify(params.data))}`;
 
     const data = await request.get(URL);
-    return parseSearchVideos(data);
+    return parseSearchVideos(data); // Parse and return the video-specific search results
   } else {
+    // For regular pin search
     const params = {
       source_url: `/search/pins/?q=${query}&rs=typed`,
       data: {
@@ -72,6 +85,6 @@ export async function searchPins(
     )}&data=${encodeURIComponent(JSON.stringify(params.data))}`;
 
     const data = await request.get(URL);
-    return searchParser(data);
+    return searchParser(data); // Parse and return the regular search results
   }
 }

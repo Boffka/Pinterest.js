@@ -3,7 +3,9 @@ import { PinV4Response } from "../interfaces";
 
 export function parsePinV4(data: RootObject): PinV4Response {
   const { resource_response } = data;
+
   const response = resource_response?.data;
+
   const title = response?.title || (response?.grid_title as string);
   const images = {
     lg: response?.images["600x315"].url,
@@ -13,7 +15,10 @@ export function parsePinV4(data: RootObject): PinV4Response {
   };
   const id = response.id;
   const video =
-    (response?.videos?.video_list["V_720P"]?.url as string) || undefined;
+    (response?.videos?.video_list["V_720P"]?.url as string) ||
+    response?.story_pin_data?.pages[0]?.blocks[0]?.video?.video_list
+      ?.V_HLSV3_MOBILE?.url;
+
   const reactions = {
     label: formatNumberWithLabel(response?.reaction_counts?.[1]) as string,
     numbers: response?.reaction_counts?.[1] as number,
@@ -329,7 +334,7 @@ interface Data {
   price_value: number;
   visual_objects: Visualobject[];
   reaction_by_me: number;
-  story_pin_data: null;
+  story_pin_data: any;
   carousel_data: any;
   embed: null;
   user_mention_tags: null;

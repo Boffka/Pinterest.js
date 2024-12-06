@@ -1,2 +1,2 @@
 export * from "./functions/index";
-export * from "./interfaces";
+export type * from "./interfaces";

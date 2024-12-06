@@ -3,13 +3,12 @@
   "version": "1.0.16",
   "description": "Get data from pinterest without any hassle.",
   "main": "dist/index.js",
-  "repository": {
-    "url": "https://github.com/TrishCX/Pinterest.js"
-  },
+  "repository": "https://github.com/TrishCX/Pinterest.js",
   "scripts": {
     "build:dev": "nodemon dist/index.js",
     "watch": "tsx watch src/index.ts",
-    "watch:dev": "npx tsc --watch"
+    "watch:dev": "npx tsc --watch",
+    "docs": "npx typedoc --plugin typedoc-plugin-markdown --out markdown --entryPoints src/index.ts"
   },
   "keywords": [
     "pinterest",
@@ -36,6 +35,8 @@
   "devDependencies": {
     "nodemon": "^3.0.1",
     "tsx": "^3.14.0",
+    "typedoc": "^0.27.3",
+    "typedoc-plugin-markdown": "^4.3.1",
     "typescript": "^5.2.2"
   }
 }

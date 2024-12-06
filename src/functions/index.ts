@@ -6,3 +6,4 @@ export * from "./getPin";
 export * from "./autocomplete";
 export * from "./getPinV3";
 export * from "./getComments";
+export * from "./visualSearch";
