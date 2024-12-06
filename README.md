@@ -60,7 +60,7 @@ const Pinterest = require("pinterest.js");
 - Added `getComments` function that takes `IOptions` as a parameter.
 - The old function `getPin` has been officially deprecated, though it is still usable as `getPinV3`.
 
-### [1.0.17] - 2024-08-06
+### [1.0.17] - 2024-12-05
 
 - Added `visualSearch` function that takes `IOptions` as a parameter.
 
